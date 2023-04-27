@@ -1,9 +1,9 @@
 @charset "UTF-8";
 /* 메인 콘텐츠 스타일 */
 .vs { clear:both; position:relative; width: 100vw; height:calc(100vh - 135px); overflow:hidden; }
-.vs video {display: block; width: 100%;}
+.vs video {display: block; width: 100%; max-width:1900px;}
 
-.page { clear: both; position: relative; width: 100vw; height: 85vh; }
+.page { clear: both; position: relative; width: 100vw; height: 100vh; }
 .page_wrap { clear: both; width: 1400px; margin: 0 auto; }
 .page_title { text-align: center; font-size: 40px; padding-top: 1.5em;}
 
@@ -42,7 +42,7 @@ padding-top:3em;  padding-left: 2.5em; font-size:32px; box-sizing:border-box; fo
 .grid_box li a .grid_tit { line-height: 1.8;}
 .grid_box li a .grid_com { font-size:18px;}
 
-#page3 { background-color: #fffee5; height: 75vh;}
+#page3 { background-color: #fffee5; height: 80vh;}
 #page3 .page_wrap { width: 1280px; padding-top: 65px; }
 .col_fr { clear:both; width: 1280px; padding-top: 40px; }
 .col_fr .col_box { clear: both; width: 1280px; }
