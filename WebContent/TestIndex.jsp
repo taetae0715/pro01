@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-	<h1 class="title">메인 페이지</h1>
+	<h1 class="title">테스트 메인 페이지</h1>
 	<div class="msg">
 	<a href="dbtest1.jsp" class="btn btn-primary">회원 목록 보기</a>
 	<a href="dbtest2.jsp" class="btn btn-primary">게시판 목록 보기</a>
