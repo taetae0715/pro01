@@ -74,14 +74,13 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="<%=hdpath %>/prcenter.jsp">홍보센터</a>
+                        <li><a href="<%=hdpath %>/board/prcenter.jsp">홍보센터</a>
                             <div class="sub item4">
                                 <ul class="dp2">
-                                    <li><a href="<%=hdpath %>/prcenter.jsp#page1">오뚜기 뉴스</a></li>
-                                    <li><a href="<%=hdpath %>/prcenter.jsp#page2">오뚜기 광고</a></li>
-                                    <li><a href="<%=hdpath %>/prcenter.jsp#page3">즐거운 오뚜기</a></li>
-                                    <li><a href="<%=hdpath %>/prcenter.jsp#page4">투자 정보</a></li>
-                                    <li><a href="<%=hdpath %>/prcenter.jsp#page5">오뚜기 창립 50주년</a></li>
+                                    <li><a href="<%=hdpath %>/board/prcenter.jsp#page1">오뚜기 뉴스</a></li>
+                                    <li><a href="<%=hdpath %>/board/prcenter.jsp#page2">오뚜기 광고</a></li>
+                                    <li><a href="<%=hdpath %>/board/prcenter.jsp#page3">투자 정보</a></li>
+                                    <li><a href="<%=hdpath %>/board/prcenter.jsp#page4">공지사항</a></li>
                                 </ul>
                             </div>
                         </li>

@@ -29,8 +29,8 @@
 
     <!-- 스타일 초기화 reset.css나 normalize.css --> 
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">  
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="<%=path %>/common.css">
+    <link rel="stylesheet" href="<%=path %>/main.css">
     <!-- 기본 폰트 및 초기화 로딩 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +39,7 @@
     /* 내부 스타일 */
    .vs, .img_box { height:50vh; margin-top: -275px; }
     #page1 .page_tit { padding-top: 50px; font-weight: 200;}
-    .page_wrap { height:1500px; }
-    #page1 { height:1600px; }
+    #page1 { height:auto; }
     .table { width:800px; margin:4px auto; padding-left:20px; border-top:2px solid #333; }
     th {  text-align: justify;  line-height: 0; width:220px; padding-top:10px; padding-bottom: 10px;}
     td { padding-top:10px; padding-bottom: 10px; }
@@ -60,10 +59,8 @@
     .page_tit { text-align:center; font-size:32px; }
    	.grp_textarea { width:1000px; margin:20px auto; }
    	.cate_tit { padding-top:10px; text-align:center; font-size:28px; padding-bottom:8px;	}
-   	.grp_textarea textarea { display:block; width:820px; margin:5px auto; padding:24px;
-   	color:#999; }
-   	.btn_fr { text-align:center; min-height:80px; width:1000px; margin:8px auto; 
-   	font-size:20px; }
+   	.grp_textarea textarea { display:block; width:820px; margin:5px auto; padding:24px; color:#999; }
+   	.btn_fr { text-align:center; min-height:80px; width:1000px; margin:8px auto; font-size:20px; }
     </style>
 </head>
 <body>
@@ -485,7 +482,7 @@
                 <div class="blank" style="height:100px"></div>
             </section>
         </div>
-		<%@ include file="footer.jsp" %>
+		<%@ include file="./footer.jsp" %>
     </div>
 </body>
 </html>

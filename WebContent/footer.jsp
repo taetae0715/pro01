@@ -63,9 +63,8 @@
                             <dt>홍보센터</dt>
                             <dd><a href="">오뚜기 뉴스</a></dd>
                             <dd><a href="">오뚜기 광고</a></dd>
-                            <dd><a href="">즐거운 오뚜기</a></dd>
                             <dd><a href="">투자정보</a></dd>
-                            <dd><a href="">오뚜기 창립 50주년</a></dd>
+                            <dd><a href="">공지사항</a></dd>
                         </dl>
                         <dl class="ft_link item5">
                             <dt>고객서비스</dt>
