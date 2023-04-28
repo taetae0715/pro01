@@ -12,7 +12,7 @@
                 <div class="tnb_wrap">
                     <ul class="left_tnb">
 <% if(id.equals("admin") && id != "") { %>
-						<li><a href="<%=hdpath %>/admin.jsp">관리자</a></li>
+						<li><a href="<%=hdpath %>/admin/admin_index.jsp">관리자</a></li>
 <% } %>
 <% if(id != "") { %>
                         <li><a href="<%=hdpath %>/mypage.jsp"><%=id %>님의 마이페이지</a></li>
