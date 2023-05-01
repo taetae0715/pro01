@@ -54,10 +54,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>마이페이지</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
 
     <meta name="subject" content="오뚜기 벤치마킹 사이트">
     <meta name="keywords" content="오뚜기, 오뚝이, 진라면, 짜슐랭, 스파게티, 스파게티소스  ">
@@ -72,8 +72,8 @@
     <meta name="og:site_name" content="오뚜기">
     <meta name="og:title" content="포트폴리오 - 오뚜기">
     <meta name="og:description" content="오뚜기 인기상품. 오뚜기의 인기상품들을 소개 합니다. 프레스코 미트 스파게티소스 조미소스/식품스파게티소스. 프레스코 미트 스파게티소스.">
-    <mata name="og:url" content="https://taetae0715.github.io/web1">
-    <mata name="og:image" content="./images/img_visual50.jpg">  
+    <meta name="og:url" content="https://taetae0715.github.io/web1">
+    <meta name="og:image" content="<%=path %>/images/img_visual50.jpg">  
 
     <!-- 스타일 초기화 reset.css나 normalize.css --> 
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">  

@@ -24,13 +24,13 @@
     <meta name="og:site_name" content="오뚜기">
     <meta name="og:title" content="포트폴리오 - 오뚜기">
     <meta name="og:description" content="오뚜기 인기상품. 오뚜기의 인기상품들을 소개 합니다. 프레스코 미트 스파게티소스 조미소스/식품스파게티소스. 프레스코 미트 스파게티소스.">
-    <mata name="og:url" content="https://taetae0715.github.io/web1">
-    <mata name="og:image" content="./images/img_visual50.jpg">  
+    <meta name="og:url" content="https://taetae0715.github.io/web1">
+    <meta name="og:image" content="<%=path %>/images/img_visual50.jpg">  
 
     <!-- 스타일 초기화 reset.css나 normalize.css --> 
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">  
-    <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="<%=path %>/common.css">
+    <link rel="stylesheet" href="<%=path %>/main.css">
     <!-- 기본 폰트 및 초기화 로딩 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

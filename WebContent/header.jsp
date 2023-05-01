@@ -33,10 +33,17 @@
                         <div class="sitemap">
                             <div class="sitemap_fr">
                                 <label for="sitemap_ck" class="close_btn">닫기</label>
-                                	<br><br><br><br>
-                                	<br><br>메렁<br><br>
-                                	<br><br><br>메렁<br><br><br><br>
-                                	<br><br><br><br>메렁
+								<table>
+									<thead>
+										<tr><th>회사소개</th><th>ESG경영</th><th>제품정보</th><th>홍보센터</th><th>고객서비스</th></tr>
+									</thead>
+									<tbody>
+										<tr><td>(주)오뚜기</td><td>ESG경영 소개</td><td>신제품 소개</td><td>오뚜기 뉴스</td><td>자주 묻는 질문</td></tr>
+										<tr><td>인재 채용</td><td>환경/사회</td><td>제품소개</td><td>오뚜기 광고</td><td>고객 한마디</td></tr>
+										<tr><td>사업장 소개</td><td>지배구조</td><td></td><td>투자정보</td><td>공장견학</td></tr>
+										<tr><td>찾아오시는 길</td><td>지속가능경영 보고서</td><td></td><td>공지사항</td><td>공장위치</td></tr>
+									</tbody>
+								</table>
                             </div>
                         </div>
                     </ul>  
@@ -45,32 +52,32 @@
             <nav class="gnb">
                 <div class="gnb_wrab">
                     <ul class="menu_gnb">
-                        <li><a href="<%=hdpath %>/company.jsp">회사소개</a>
+                        <li><a href="<%=hdpath %>/company/company.jsp">회사소개</a>
                            <div class="sub item1">
                                 <ul class="dp2">
-                                    <li><a href="<%=hdpath %>/company.jsp#page1">(주)오뚜기</a></li>
-                                    <li><a href="<%=hdpath %>/company.jsp#page2">인재 채용</a></li>
-                                    <li><a href="<%=hdpath %>/company.jsp#page3">사업장 소개</a></li>
-                                    <li><a href="<%=hdpath %>/company.jsp#page4">찾아오시는 길</a></li>
+                                    <li><a href="<%=hdpath %>/company/company.jsp#page1">(주)오뚜기</a></li>
+                                    <li><a href="<%=hdpath %>/company/company.jsp#page2">인재 채용</a></li>
+                                    <li><a href="<%=hdpath %>/company/company.jsp#page3">사업장 소개</a></li>
+                                    <li><a href="<%=hdpath %>/company/company.jsp#page4">찾아오시는 길</a></li>
                                  </ul>
                              </div>
                         </li>
-                        <li><a href="<%=hdpath %>/esg.jsp">ESG경영</a>
+                        <li><a href="<%=hdpath %>/manage/esg.jsp">ESG경영</a>
                             <div class="sub item2">
                                 <ul class="dp2">
-                                    <li><a href="<%=hdpath %>/esg.jsp#page1">ESG경영소개</a></li>
-                                    <li><a href="<%=hdpath %>/esg.jsp#page2">환경</a></li>
-                                    <li><a href="<%=hdpath %>/esg.jsp#page3">사회</a></li>
-                                    <li><a href="<%=hdpath %>/esg.jsp#page4">지배구조</a></li>
-                                    <li><a href="<%=hdpath %>/esg.jsp#page5">지속가능경영 보고서</a></li>
+                                    <li><a href="<%=hdpath %>/manage/esg.jsp#page1">ESG경영소개</a></li>
+                                    <li><a href="<%=hdpath %>/manage/esg.jsp#page2">환경</a></li>
+                                    <li><a href="<%=hdpath %>/manage/esg.jsp#page3">사회</a></li>
+                                    <li><a href="<%=hdpath %>/manage/esg.jsp#page4">지배구조</a></li>
+                                    <li><a href="<%=hdpath %>/manage/esg.jsp#page5">지속가능경영 보고서</a></li>
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="<%=hdpath %>/product.jsp">제품정보</a>
+                        <li><a href="<%=hdpath %>/product/product.jsp">제품정보</a>
                             <div class="sub item3">
                                  <ul class="dp2">
-                                    <li><a href="<%=hdpath %>/product.jsp#page1">신제품 소개</a></li>
-                                    <li><a href="<%=hdpath %>/product.jsp#page2">제품 소개</a></li>
+                                    <li><a href="<%=hdpath %>/product/product.jsp#page1">신제품 소개</a></li>
+                                    <li><a href="<%=hdpath %>/product/product.jsp#page2">제품 소개</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -84,12 +91,12 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a href="<%=hdpath %>/customer.jsp">고객서비스</a>
+                        <li><a href="<%=hdpath %>/customer/customer.jsp">고객서비스</a>
                             <div class="sub item5">
                                 <ul class="dp2">
-                                    <li><a href="<%=hdpath %>/customer.jsp#page1">자주 묻는 질문</a></li>
-                                    <li><a href="<%=hdpath %>/customer.jsp#page2">고객 한마디</a></li>
-                                    <li><a href="<%=hdpath %>/customer.jsp#page3">공장 견학</a></li>
+                                    <li><a href="<%=hdpath %>/customer/customer.jsp#page1">자주 묻는 질문</a></li>
+                                    <li><a href="<%=hdpath %>/customer/customer.jsp#page2">고객 한마디</a></li>
+                                    <li><a href="<%=hdpath %>/customer/customer.jsp#page3">공장 견학</a></li>
                                 </ul>
                             </div> 
                         </li>
