@@ -20,7 +20,6 @@
 	String tel = "";
 	String email = "";
 	String addr = "";
-	int point = 0;
 	String regdate = "";
 	try {
 		Class.forName(driver);
@@ -37,14 +36,13 @@
 					tel = rs.getString("tel");
 					email = rs.getString("email");
 					addr = rs.getString("addr");
-					point = rs.getInt("point");
 					regdate = rs.getString("regdate");
 				}
 				rs.close();
 				pstmt.close();
 				conn.close();
 			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
+				System.out.println("SQL 전송 실패"+e);
 			}
 		} catch(SQLException e){
 			System.out.println("데이터베이스 연결 실패~!");
@@ -56,7 +54,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원정보 수정</title>
+<title>회원 정보 수정</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,16 +89,18 @@
     <script src="<%=path %>/datatables.min.js"></script>
     <link rel="stylesheet" href="<%=path %>/datatables.min.css">
     <style>
-   .vs { height:40vh; }
-    .content { background-image: url("./images/top_career.jpg"); }
-    #page1 .page_tit { padding-top: 60px; }
-    .table { width:900px; margin:4px auto; padding-top:20px; border-top:2px solid #333; }
-    th {  text-align: justify;  line-height: 0; width:180px; padding-top:10px; padding-bottom: 10px;}
+    .ad_img_box { height:300px; margin-top: -450px; margin-bottom: 480px;}
+   	.tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
+ 	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
+    #page1 .page_tit { padding-top: 50px; padding-bottom: 50px; }
+    .page { height: auto;}
+    .table { width:800px; margin:4px auto; padding-left:20px; border-top:2px solid #333; text-align: center;}
+    th {  text-align: justify;  line-height: 0; width:220px; padding-top:10px; padding-bottom: 10px;}
     td { padding-top:10px; padding-bottom: 10px; }
     th:after {  content: "";  display: inline-block;  width: 100%; }
     th:before {  content: "";  display: inline-block;  width: 100%; }
-    .lb { display:block;  font-size:20px; }
-    .indata { display:inline-block; width:300px; height:24px; line-height:24px; padding:10px; }
+    .lb { display:block;  font-size:20px; margin-left: 100px; }
+    .indata { display:inline-block; width:250px; height:15px; line-height:15px; margin-left: 60px; padding:10px; }
     .btn { display:inline-block; outline:none; border:none; border-radius:8px; margin:16px;
          text-align: center; padding:10px 20px;  cursor:pointer; }
     .btn-primary { background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
@@ -109,23 +109,22 @@
     .btn-cancle { background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); 
         background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); 
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
-        color:#fff;
-    }
+        color:#fff; }
     .page_tit { text-align:center; font-size:32px; }
-   
     </style>
 </head>
 <body>
     <div class="container">
 		<%@ include file="./admin_header.jsp" %>
         <div class="content">
-            <figure class="vs">
-                <div class="img_box">
-                    <h1 class="tit">My Page</h1>
+            <figure class="vvs">
+                <div class="ad_img_box">
+                    <img src="<%=path %>/images/join.png" alt="관리자 이미지">
+               		<h1 class="tit">ADMIN PAGE</h1>
                 </div>
-            </figure>
+              </figure>
             <section class="page" id="page1">
-                <h2 class="page_tit">회원 수정</h2>
+                <h2 class="page_tit">회원 정보 수정</h2>
                 <div class="page_wrap">
                     <form name="modify_form" id="modify_form" action="member_modify_pro.jsp" method="post" onsubmit="return form_check(this)">
 						<table class="table">
@@ -133,7 +132,7 @@
 								<tr>
 									<th><label for="id" class="lb">아이디</label></th>
 									<td>
-										<input type="text" name="id" id="id" class="indata" value="<%=wid %>" readonly">
+										<input type="text" name="id" id="id" class="indata" value="<%=wid %>" readonly>
 									</td>
 								</tr>
 								<tr>
@@ -162,7 +161,7 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<input type="submit" value="회원정보수정" class="btn btn-primary"> &nbsp; &nbsp; &nbsp; &nbsp;
+										<input type="submit" value="수정" class="btn btn-cancle"> &nbsp; &nbsp; &nbsp; &nbsp;
 										<a href="<%=path %>/admin/member_manage.jsp" class="btn btn-primary">목록</a>
 									</td>
 								</tr>

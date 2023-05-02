@@ -37,7 +37,7 @@
 				pstmt.setString(6, id);
 				int n = pstmt.executeUpdate();
 				if(n>0){
-					response.sendRedirect("mypage.jsp?id="+id);
+					response.sendRedirect("member_manage.jsp?id="+id);
 				} else {
 					response.sendRedirect("member_mod.jsp?id="+id);
 				}

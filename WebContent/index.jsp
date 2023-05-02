@@ -37,6 +37,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Sono&display=swap" rel="stylesheet">
     <style>
     /* 내부 스타일 */
+    table { display:table; width:900px; margin:10px auto; 
+	border-bottom:1px solid #333; 
+	border-collapse:collapse; }
+	tr { display:table-row; }
+	th, td { display:table-cell; border-top:1px solid #333;
+	text-align:center; line-height:36px; }
+	th { background-color:#333; color:#fff; }
+    .table { width:900px; margin:4px auto; padding-top:20px;  }
     </style>
 </head>
 <body>

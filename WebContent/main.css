@@ -3,7 +3,7 @@
 .vs { clear:both; position:relative; width: 100vw; height:calc(100vh - 135px); overflow:hidden; }
 .vs video {display: block; width: 100%; max-width:1900px;}
 
-.page { clear: both; position: relative; width: 100vw; height: 100vh; }
+.page { clear: both; position: relative; width: 100vw; height: auto; }
 .page_wrap { clear: both; width: 1400px; margin: 0 auto; }
 .page_title { text-align: center; font-size: 40px; padding-top: 1.5em;}
 

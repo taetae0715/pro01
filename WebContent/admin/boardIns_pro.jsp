@@ -4,13 +4,10 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=utf-8");
-	
+
 	String id = request.getParameter("id");
-	String pw = request.getParameter("pw");
-	String email = request.getParameter("email");
-	String tel = request.getParameter("tel");
-	String name = request.getParameter("name");
-	String addr = request.getParameter("addr");
+	String title = request.getParameter("title");
+	String content = request.getParameter("content");
 	
 	String driver = "org.postgresql.Driver";
 	String url = "jdbc:postgresql://localhost/pro1";
@@ -26,25 +23,22 @@
 		Class.forName(driver);
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
-			sql = "insert into member values (?,?,?,?,?,?,default)";
+			sql = "insert into board values (default,?,?,?,default)";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, id);
-				pstmt.setString(2, pw);
-				pstmt.setString(3, name);
-				pstmt.setString(4, email);
-				pstmt.setString(5, tel);
-				pstmt.setString(6, addr);
+				pstmt.setString(1, title);		//title
+				pstmt.setString(2, content);	//content
+				pstmt.setString(3, id);		//author
 				int n = pstmt.executeUpdate();
 				if(n>0){
-					response.sendRedirect("member_manage.jsp");
+					response.sendRedirect("./board_manage.jsp");
 				} else {
-					response.sendRedirect("member_Insert.jsp");
+					response.sendRedirect("./board_manage.jsp");
 				}
 				pstmt.close();
 				conn.close();
 			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
+				System.out.println("SQL 전송 실패"+e);
 			}
 		} catch(SQLException e){
 			System.out.println("데이터베이스 연결 실패~!");

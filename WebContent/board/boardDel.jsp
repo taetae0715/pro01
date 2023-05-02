@@ -27,9 +27,9 @@
 				pstmt.setInt(1, bno);
 				int n = pstmt.executeUpdate();
 				if(n>0){
-					response.sendRedirect("prcenter.jsp#page4");
+					response.sendRedirect("board_manage.jsp");
 				} else {
-					response.sendRedirect("boardDtail.jsp?bno="+bno);
+					response.sendRedirect("board_Detail.jsp?bno="+bno);
 				}
 				pstmt.close();
 				conn.close();

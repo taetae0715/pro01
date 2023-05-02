@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>관리자 페이지 - 회원 관리</title>
+<title>관리자 페이지 - 게시판 관리</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,6 @@
     .ad_img_box { height:300px; margin-top: -450px; margin-bottom: 480px;}
    	.tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
  	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
- 	.page { height: auto; }
 	table { display:table; width:900px; margin:10px auto; 
 	border-bottom:1px solid #333; 
 	border-collapse:collapse; }
@@ -92,11 +91,11 @@
                 </div>
             </figure>
             <section class="page" id="page1">
-                <h2 class="page_tit">회원관리</h2>
+                <h2 class="page_tit">게시판 관리</h2>
                 <div class="tb_wrap">
 					<table class="table" id="tb1">
 						<thead>
-							<tr><th>연번</th><th>아이디</th><th>회원명</th><th>연락처</th><th>가입일</th></tr>
+							<tr><th>NO</th><th>제목</th><th>작성자</th><th>작성일</th></tr>
 						</thead>
 						<tbody>
 <%
@@ -116,68 +115,58 @@
 			Class.forName(driver);
 			try {
 				conn = DriverManager.getConnection(url, user, pass);
-				sql = "select * from member order by regdate desc";
+				sql = "select board.bno as bno, board.title as title, board.content as content, member.name as name, board.resdate as resdate, board.author as author from board, member where board.author=member.id order by board.bno desc";
 				try {
 					pstmt = conn.prepareStatement(sql);
 					rs = pstmt.executeQuery();	
 						if(rs==null){
 %>
-							<tr><td colspan="5">회원이 존재하지 않습니다.</td></tr>
+							<tr><td colspan="4">게시글이 존재하지 않습니다.</td></tr>
 <%							
-						}	
+					}					
 						while(rs.next()){
 							++i;
-							kid = rs.getString("id");
 %>
-							<tr>
-								<td><%=i %></td>
-								<td><%=kid %></td>
-								<td>
-									<a href='<%=path %>/admin/member_Detail.jsp?id=<%=kid %>'><%=rs.getString("name") %></a>
-								</td>
-								<td><%=rs.getString("tel") %></td>
-								<td class="reg"><%=rs.getString("regdate") %>
-									<% if(!kid.equals("admin")) { %>
-									<a href='<%=path %>/admin/member_del.jsp?id=<%=kid %>' class="btn btn-cancle">탈퇴</a>
-									<% } %>
-								</td>
-							</tr>
-<%							
-						}
-%>	
-						</tbody>
-					</table>
-					<div class="grp_btn" style="width:1280px; margin:20px auto;">
+						<tr>
+							<td><%=i %></td>
+							<td>
 <%
-							if(pid.equals("admin")){
-%>						
-						<a href="<%=path %>/admin/member_Insert.jsp" class="btn btn-primary">신규 회원 등록</a>
+							if(pid!=""){
+%>							
+								<a href="<%=path %>/admin/board_Detail.jsp?bno=<%=rs.getString("bno") %>"><%=rs.getString("title") %></a>
 <%
 							} else {
 %>
-						<h3 class="data">현재 사용자는 관리자가 아닙니다.</h3>
+								<span><%=rs.getString("title") %></span>
+<%
+							}
+%>
+							</td>
+							<td><%=rs.getString("name") %></td>
+							<td><%=rs.getString("resdate") %></td>
+						</tr>
+<%							
+							}
+%>	
+					</tbody>
+				</table>
+				<div class="grp_btn" style="width:1280px; margin:20px auto;">
+<%
+							if(pid!=""){
+%>						
+						<a href="<%=path %>/admin/board_Ins.jsp" class="btn btn-primary">글쓰기</a>
+<%
+							} else {
+%>
+						<h3 class="data">관리자로 로그인 후에 글쓰기가 가능합니다.</h3>
 <%
 							}
 %>
 					</div>
-<%
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
-			}
-		} catch(SQLException e){
-			System.out.println("데이터베이스 연결 실패~!");
-		}
-	} catch(ClassNotFoundException e){
-		System.out.println("드라이버 로딩 실패~!");
-	}
-%>
 				</div>
 				<script>
 				$(document).ready(function(){
-				    $('#tb1').DataTable({'order': [[0, 'desc']]});
+				    $('#tb1').DataTable({'order': [[0, 'asc']]});
 				});
 				</script>
 			</section>
@@ -186,3 +175,17 @@
 	</div>
 </body>
 </html>
+<%
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch(SQLException e){
+				System.out.println("SQL 전송 실패"+e);
+			}
+		} catch(SQLException e){
+			System.out.println("데이터베이스 연결 실패~!");
+		}
+	} catch(ClassNotFoundException e){
+		System.out.println("드라이버 로딩 실패~!");
+	}
+%>

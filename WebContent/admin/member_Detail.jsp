@@ -2,17 +2,59 @@
     pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
 <%
-	String pid = "";
-	if(session.getAttribute("id")!=null){
-		pid = (String) session.getAttribute("id");
-	}
 	String path = request.getContextPath();
+%>
+<%
+	String driver = "org.postgresql.Driver";
+	String url = "jdbc:postgresql://localhost/pro1";
+	String user = "postgres";
+	String pass = "1234";
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "";
+	String wid = request.getParameter("id");
+	String wpw = "";
+	String wname = "";
+	String tel = "";
+	String email = "";
+	String addr = "";
+	String regdate = "";
+	try {
+		Class.forName(driver);
+		try {
+			conn = DriverManager.getConnection(url, user, pass);
+			sql = "select * from member where id=?";
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, wid);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					wpw = rs.getString("pw");
+					wname = rs.getString("name");
+					tel = rs.getString("tel");
+					email = rs.getString("email");
+					addr = rs.getString("addr");
+					regdate = rs.getString("regdate");
+				}
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch(SQLException e){
+				System.out.println("SQL 전송 실패"+e);
+			}
+		} catch(SQLException e){
+			System.out.println("데이터베이스 연결 실패~!");
+		}
+	} catch(ClassNotFoundException e){
+		System.out.println("드라이버 로딩 실패~!");
+	}
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>관리자 페이지 - 회원 관리</title>
+<title>회원정보 상세보기</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,19 +93,19 @@
    	.tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
  	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
  	.page { height: auto; }
-	table { display:table; width:900px; margin:10px auto; 
-	border-bottom:1px solid #333; 
-	border-collapse:collapse; }
-	tr { display:table-row; }
-	th, td { display:table-cell; border-top:1px solid #333;
-	text-align:center; line-height:36px; }
-	th { background-color:#333; color:#fff; }
-    .table { width:900px; margin:4px auto; padding-top:20px;  }
-    .lb { display:block;  font-size:20px; }
-    .indata { display:inline-block; width:300px; height:24px; line-height:24px; padding:10px; }
+    #page1 .page_tit { padding-top: 50px; padding-bottom: 50px; }
+    .table { width:900px; margin:4px auto; padding-top:20px; border-top:2px solid #333; }
+    th {  text-align: justify;  line-height: 0; width:180px; padding-top:10px; padding-bottom: 10px;}
+    td { padding-top:10px; padding-bottom: 10px; }
+    th:after {  content: "";  display: inline-block;  width: 100%; }
+    th:before {  content: "";  display: inline-block;  width: 100%; }
+    
+    .lb { display:block;  font-size:20px; margin-left: 150px; }
+    .lbdata { display:block;  font-size:20px; margin-left: -1000px; }
+   
     .btn { display:inline-block; outline:none; border:none; border-radius:8px; margin:16px;
          text-align: center; padding:10px 20px;  cursor:pointer; }
-    .btn-primary { background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
+    .btn-primary { margin-left: 250px; background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
         background: -webkit-linear-gradient(top, #00b7ea 0%,#009ec3 100%); 
         background: linear-gradient(to bottom, #00b7ea 0%,#009ec3 100%); color:#fff; }
     .btn-cancle { background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); 
@@ -71,15 +113,9 @@
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
         color:#fff;
     }
-    .page_tit { text-align:center; font-size:32px; padding-top:80px; padding-bottom:30px; }
-    .tb_wrap { clear:both; width:900px; margin:10px auto; border-top:2px solid #333; padding-top:15px; }
-   	.detail { display:block; text-align:center; max-width:120px; min-width:90px; padding:12px; font-size:24px; background-color: rgba(7, 93, 70, 0.9);
-   	color:#fff; border-radius:30px; margin:42px auto; }
-   	#page2, #page4 { background-color:rgba(240,240,240,0.8); }
-   	.table.dataTable thead>tr>th { text-align:center; }
-   	table.dataTable tbody tr td:last-child { text-align:center; padding-left:50px; }
-   	.reg {margin-left: 200px;}
-</style>
+    .page_tit { text-align:center; font-size:32px; }
+   
+    </style>
 </head>
 <body>
     <div class="container">
@@ -90,99 +126,43 @@
                     <img src="<%=path %>/images/join.png" alt="관리자 이미지">
                		<h1 class="tit">ADMIN PAGE</h1>
                 </div>
-            </figure>
+              </figure>
             <section class="page" id="page1">
-                <h2 class="page_tit">회원관리</h2>
-                <div class="tb_wrap">
-					<table class="table" id="tb1">
-						<thead>
-							<tr><th>연번</th><th>아이디</th><th>회원명</th><th>연락처</th><th>가입일</th></tr>
-						</thead>
+                <h2 class="page_tit">회원 상세보기</h2>
+                <div class="page_wrap">
+					<table class="table">
 						<tbody>
-<%
-
-		String driver = "org.postgresql.Driver";
-		String url = "jdbc:postgresql://localhost/pro1";
-		String user = "postgres";
-		String pass = "1234";
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		String sql = "";
-		String kid = "";
-		int i = 0;
-		try {
-			Class.forName(driver);
-			try {
-				conn = DriverManager.getConnection(url, user, pass);
-				sql = "select * from member order by regdate desc";
-				try {
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();	
-						if(rs==null){
-%>
-							<tr><td colspan="5">회원이 존재하지 않습니다.</td></tr>
-<%							
-						}	
-						while(rs.next()){
-							++i;
-							kid = rs.getString("id");
-%>
 							<tr>
-								<td><%=i %></td>
-								<td><%=kid %></td>
-								<td>
-									<a href='<%=path %>/admin/member_Detail.jsp?id=<%=kid %>'><%=rs.getString("name") %></a>
-								</td>
-								<td><%=rs.getString("tel") %></td>
-								<td class="reg"><%=rs.getString("regdate") %>
-									<% if(!kid.equals("admin")) { %>
-									<a href='<%=path %>/admin/member_del.jsp?id=<%=kid %>' class="btn btn-cancle">탈퇴</a>
-									<% } %>
+								<th class="lb">아이디</th><td class="indata"><%=wid %></td>
+							</tr>
+							<tr>
+								<th class="lb">비밀번호</th><td class="indata"><%=wpw %></td>
+							</tr>
+							<tr>
+								<th class="lb">이름</th><td class="indata"><%=wname %></td>
+							</tr>
+							<tr>
+								<th class="lb">전화번호</th><td class="indata"><%=tel %></td>
+							</tr>
+							<tr>
+								<th class="lb">이메일</th><td class="indata"><%=email %></td>
+							</tr>
+							<tr>
+								<th class="lb">주소</th><td class="indata"><%=addr %></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<a href="member_mod.jsp?id=<%=wid %>" class="btn btn-primary">정보 수정</a> &nbsp; &nbsp; &nbsp; &nbsp;
+									<a href="member_del.jsp?id=<%=wid %>" class="btn btn-cancle">회원 탈퇴</a>
 								</td>
 							</tr>
-<%							
-						}
-%>	
 						</tbody>
 					</table>
-					<div class="grp_btn" style="width:1280px; margin:20px auto;">
-<%
-							if(pid.equals("admin")){
-%>						
-						<a href="<%=path %>/admin/member_Insert.jsp" class="btn btn-primary">신규 회원 등록</a>
-<%
-							} else {
-%>
-						<h3 class="data">현재 사용자는 관리자가 아닙니다.</h3>
-<%
-							}
-%>
-					</div>
-<%
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
-			}
-		} catch(SQLException e){
-			System.out.println("데이터베이스 연결 실패~!");
-		}
-	} catch(ClassNotFoundException e){
-		System.out.println("드라이버 로딩 실패~!");
-	}
-%>
-				</div>
-				<script>
-				$(document).ready(function(){
-				    $('#tb1').DataTable({'order': [[0, 'desc']]});
-				});
-				</script>
-			</section>
-		</div>
+
+                </div>
+            </section>
+        </div>
         <%@ include file="../footer.jsp" %>
-	</div>
+    </div>
 </body>
 </html>

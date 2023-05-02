@@ -93,11 +93,13 @@
     td { padding-top:10px; padding-bottom: 10px; }
     th:after {  content: "";  display: inline-block;  width: 100%; }
     th:before {  content: "";  display: inline-block;  width: 100%; }
-    .lb { display:block;  font-size:20px; margin-left: 100px; }
-    .indata { display:inline-block; width:250px; height:15px; line-height:15px; margin-left: 60px; padding:10px; }
+    
+    .lb { display:block;  font-size:20px; margin-left: 120px; }
+    .lbdata { display:block;  font-size:20px; margin-left: -200px; }
+    
     .btn { display:inline-block; outline:none; border:none; border-radius:8px; margin:16px;
          text-align: center; padding:10px 20px;  cursor:pointer; }
-    .btn-primary { background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
+    .btn-primary { margin-left: 250px; background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
         background: -webkit-linear-gradient(top, #00b7ea 0%,#009ec3 100%); 
         background: linear-gradient(to bottom, #00b7ea 0%,#009ec3 100%); color:#fff; }
     .btn-cancle { background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); 
@@ -122,27 +124,27 @@
                     <table class="table">
 						<tbody>
 							<tr>
-								<th>아이디</th><td><%=wid %></td>
+								<th class="lb">아이디</th><td class="indata"><%=wid %></td>
 							</tr>
 							<tr>
-								<th>비밀번호</th><td><%=wpw %></td>
+								<th class="lb">비밀번호</th><td class="indata"><%=wpw %></td>
 							</tr>
 							<tr>
-								<th>이름</th><td><%=wname %></td>
+								<th class="lb">이름</th><td class="indata"><%=wname %></td>
 							</tr>
 							<tr>
-								<th>전화번호</th><td><%=tel %></td>
+								<th class="lb">전화번호</th><td class="indata"><%=tel %></td>
 							</tr>
 							<tr>
-								<th>이메일</th><td><%=email %></td>
+								<th class="lb">이메일</th><td class="indata"><%=email %></td>
 							</tr>
 							<tr>
-								<th>주소</th><td><%=addr %></td>
+								<th class="lb">주소</th><td class="indata"><%=addr %></td>
 							</tr>
 							<tr>
 								<td colspan="2">
 									<a href="member_mod.jsp?id=<%=wid %>" class="btn btn-primary">정보 수정</a> &nbsp; &nbsp; &nbsp; &nbsp;
-									<a href="member_del.jsp?id=<%=wid %>" class="btn btn-cancle">회원탈퇴</a>
+									<a href="member_del.jsp?id=<%=wid %>" class="btn btn-cancle">회원 탈퇴</a>
 								</td>
 							</tr>
 						</tbody>

@@ -50,7 +50,7 @@
     /* 내부 스타일 */
     .page {height: auto;}
    .vs, .img_box { height:50vh; margin-top: -45px; }
-   .tit {position: relative; margin-top: -350px; text-align: center; line-height: 40vh; color:#fff;
+   .tit {position: relative; margin-top: -430px; text-align: center; line-height: 40vh; color:#fff;
  	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
     .lb { display:block;  font-size:36px !important; text-align: center; margin-bottom: 25px; margin-top: 25px;
    	 background: url('<%=path %>/images/tit_h2.png') no-repeat center bottom; padding-bottom: 20px;}
@@ -64,12 +64,12 @@
   	.img3 {margin-top: 200px; margin-bottom: 50px; }
   	.imgpro {margin-left: 70px;}
   	
-  	.env { position: relative; margin-right: 650px;  margin-bottom: 50px;}
+  	.env { position: relative; margin-right: 650px;  margin-bottom: 50px; line-height: 1.2;}
   	.env2 { position: relative; margin-left: 700px;  margin-top: -200px; margin-bottom: 50px;}
-  	.env3 { position: relative; margin-left: 700px;  margin-top: -225px; margin-bottom: 50px;}
+  	.env3 { position: relative; margin-left: 700px;  margin-top: -250px; margin-bottom: 50px; ine-height: 1.3;}
   	.imgev2 { position: relative; margin-left: 700px;  margin-top: -270px; margin-bottom: 50px;}
   	
-  	.btmBrn06{background:#5e4d44 url('<%=path %>/images/bg_bottomBrn6.jpg') no-repeat center 0; min-height:520px; height:auto; background-size:cover; padding-top:75px; padding-bottom:40px; width: 1900px; margin-left: -300px;}
+  	.btmBrn06{background:#5e4d44 url('<%=path %>/images/bg_bottomBrn6.jpg') no-repeat center 0; min-height:520px; height:auto; background-size:cover; padding-top:75px; padding-bottom:40px; width: 1900px; margin-left: -309px;}
 	.btmBrn06 dl {text-align:left; padding: 0 0 0 35px; width: 100%; margin-left: 940px;}
 	.btmBrn06 dt {font-size:36px; color:#fff; padding-bottom:30px;}
 	.btmBrn06 dd {font-size:18px; color:#fff; line-height:1.8; padding-left:25px; position:relative; display:block;}
@@ -191,7 +191,7 @@
 									<dd><span class="h">7.</span>  우리는 환경경영활동의 정보화로 내외부 의사소통체계를 강화하고, <br>전략 목표와 과제를 반드시 실행한다.</dd>
 									<dd><span class="h">8.</span>  우리는 환경보전에 대한 사회적 책임을 깊이 인식하고 지역사회의 환경보전활동에 적극 참여한다.</dd>
 									<dd><span class="h">9.</span>  우리는 업무 및 제품, 서비스와 관련된 환경관점과 법률적 요건을 철저히 파악한다.</dd>
-									<dd><span class="h">10.</span> 우리는 환경목표를 지속적으로 달성하기 위하여 필요한 교육과 충분한 자료를 확보한다.</dd>
+									<dd><span class="h">10. </span> 우리는 환경목표를 지속적으로 달성하기 위하여 필요한 교육과 충분한 자료를 확보한다.</dd>
 								</dl>
 								</div>
 							</div>
@@ -214,7 +214,7 @@
 						<div class="env3">
 							<dl>
 								<dd style="word-break:keep-all;">모든 인간은 존엄하게 대우받을 권리가 있으며, 이러한 권리에는 생명과 신체적 안전, 사상/표현/종교의 자유, 결사의 자유, 일과 가정생활의 균형, 사생활 보장, 식량과 물 안보 확보, 고문/노예제도 또는 강제노동으로부터의 자유, 공정하고 품위 있는 근로 조건에 대한 권리, 차별금지 등이 포함되어 있습니다.
-								<br><br><br>
+								<br><br><br><br>
 								이에 주식회사 오뚜기는 타인의 인권을 침해하는 것을 방지하고 회사의 경영활동 과정에서 인권에 대한 부정적 영향의 방지와 해결을 위해 적절한 조치를 취하고자 노력하고 있으며, 그러한 노력을 명확히 밝히기 위해 다음과 같이 인권경영 가이드라인을 공개합니다.</dd>
 							</dl>
 						</div>

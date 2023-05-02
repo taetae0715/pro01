@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="java.sql.*"%>
 <%
 	String pid = "";
 	if(session.getAttribute("id")!=null){
@@ -11,12 +10,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>제품소개</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제품소개</title>
+    <title>공지사항 - 글쓰기</title>
 
     <meta name="subject" content="오뚜기 벤치마킹 사이트">
     <meta name="keywords" content="오뚜기, 오뚝이, 진라면, 짜슐랭, 스파게티, 스파게티소스  ">
@@ -35,40 +32,32 @@
     <meta name="og:image" content="<%=path %>/images/img_visual50.jpg">  
 
     <!-- 스타일 초기화 reset.css나 normalize.css --> 
-    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
     <link rel="stylesheet" href="<%=path %>/common.css">
     <link rel="stylesheet" href="<%=path %>/sub_common.css">
     <link rel="stylesheet" href="<%=path %>/sublayout.css">
     <script src="<%=path %>/jquery-1.10.1.min.js"></script>
     <script src="<%=path %>/datatables.min.js"></script>
-    <link rel="stylesheet" href="<%=path %>/datatables.min.css">    
+    <link rel="stylesheet" href="<%=path %>/datatables.min.css">
+    
     <!-- 기본 폰트 및 초기화 로딩 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Sono&display=swap" rel="stylesheet">
     <style>
-    /* 내부 스타일 */
-    .page {height: auto;}
-   .vs, .img_box { height:50vh; margin-top: -45px; }
-   .tit {position: relative; margin-top: -430px; text-align: center; line-height: 40vh; color:#fff;
+   	.ad_img_box { height:300px; margin-top: -450px; margin-bottom: 480px;}
+    .tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
  	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
-    .lb { display:block;  font-size:24px;text-align: center; margin-bottom: 25px; color: #666;
-   	 background: url('<%=path %>/images/tit_h2.png') no-repeat center bottom; padding-bottom: 20px;}
-  	.lb_content {text-align: center; font-size: 18px; color: #666; padding: 0 20%; margin-bottom: 50px;}
-  	.pcl { color: #dc2c34; }
-  	
-  	.prolist { width: 1280px; margin-bottom: 30px;}
-  	
-	table { display:table; width:1000px; margin:10px auto; 
-	border-bottom:1px solid #333; border-collapse:collapse; }
-	tr { display:table-row; }
-	th, td { display:table-cell; border-top:1px solid #333;
-	text-align:center; line-height:36px; }
-	th { background-color:#333; color:#fff; }
-    .table { width:1000px; margin:4px auto; padding-top:20px;  }
-    .lb { display:block;  font-size:20px; }
-    .indata { display:inline-block; width:300px; height:24px; line-height:24px; padding:10px; }
-    .btn { display:inline-block; outline:none; border:none; border-radius:8px;
+    #page1 .page_tit { padding-top: 50px; padding-bottom: 50px; }
+    .page { height: auto; }
+    .table { width:900px; margin:4px auto; padding-left:20px; border-top:2px solid #333; }
+    th {  text-align: justify;  line-height: 0; width:220px; padding-top:10px; padding-bottom: 10px;}
+    td { padding-top:10px; padding-bottom: 10px; }
+    th:after {  content: "";  display: inline-block;  width: 100%; }
+    th:before {  content: "";  display: inline-block;  width: 100%; }
+    .lb { display:block;  font-size:20px; text-align: center;}
+    .indata { display:inline-block; width:800px; height:24px; line-height:24px; padding:10px; }
+    .btn { display:inline-block; outline:none; border:none; border-radius:8px; margin:16px;
          text-align: center; padding:10px 20px;  cursor:pointer; }
     .btn-primary { background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%); 
         background: -webkit-linear-gradient(top, #00b7ea 0%,#009ec3 100%); 
@@ -76,39 +65,50 @@
     .btn-cancle { background: -moz-linear-gradient(top, #a90329 0%, #8f0222 44%, #6d0019 100%); 
         background: -webkit-linear-gradient(top, #a90329 0%,#8f0222 44%,#6d0019 100%); 
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
-        color:#fff;}
-    .page_tit { text-align:center; font-size:50px; padding-top:60px; padding-bottom: 10px; font-weight: 600;}
-    .tb_wrap { clear:both; width:900px; margin:10px auto; border-top:2px solid #333; padding-top:15px; }
-   	.detail { display:block; text-align:center; max-width:120px; min-width:90px; padding:12px; font-size:24px; background-color: rgba(7, 93, 70, 0.9);
-   	color:#fff; border-radius:30px; margin:42px auto; }
-	</style>
+        color:#fff; }
+    .page_tit { text-align:center; font-size:32px; }
+    </style>
 </head>
 <body>
     <div class="container">
-		<%@ include file="../header.jsp" %>  
+		<%@ include file="./admin_header.jsp" %>
         <div class="content">
-            <figure class="vs">
-                <div class="img_box">
-                    <img src="../images/visual_02.jpg" alt="제품정보 이미지">
+            <figure class="vvs">
+                <div class="ad_img_box">
+                    <img src="<%=path %>/images/join.png" alt="관리자 이미지">
+               		<h1 class="tit">ADMIN PAGE</h1>
                 </div>
             </figure>
-            <h1 class="tit">제품정보</h1>
             <section class="page" id="page1">
-                <h2 class="page_tit">신제품소개</h2>
-                <article class="grid3" style="margin:10px auto;">
-                <h3 class="lb">오뚜기에서 새롭게 선보이는 신제품을 소개해 드립니다</h3>
-                <img src="<%=path %>/images/proins1.png" alt="신제품리스트" class="prolist">
-	            </article>
-			</section>
-            <section class="page" id="page2">
-                <h2 class="page_tit">제품소개</h2>
-                <article class="grid3" style="margin:10px auto;">
-                <h3 class="lb">아래 분류 기능을 이용하여 편리하게 제품을 검색하세요</h3>
-                <img src="<%=path %>/images/proins2.png" alt="신제품리스트" class="prolist">
-	            </article>
-			</section>
-		</div>
+                <h2 class="page_tit">공지사항 글쓰기</h2>
+                <div class="page_wrap">
+                    <form name="boardIns" action="boardIns_pro.jsp" method="post" id="boardIns">
+                        <table class="table" id="tb1">
+                            <tbody>
+								<tr>
+									<th><label for="title" class="lb">제목</label></th>
+									<td><input type="text" name="title" id="title" class="indata" required autofocus></td>
+								</tr>
+								<tr>
+									<th><label for="content" class="lb">내용</label></th>
+									<td>
+										<textarea rows="20" cols="100" name="content" id="content"></textarea>
+										<input type="hidden" name="id" value="<%=pid %>">
+									</td>
+								</tr>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;">
+                                        <input type="submit" value="등록" class="btn btn-primary"> &nbsp; &nbsp; &nbsp; &nbsp;
+                                        <input type="reset" value="취소" class="btn btn-cancle">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+                    </form>
+                </div>
+            </section>
+        </div>
         <%@ include file="../footer.jsp" %>
-	</div>
+    </div>
 </body>
 </html>

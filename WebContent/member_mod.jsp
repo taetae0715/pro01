@@ -42,7 +42,7 @@
 				pstmt.close();
 				conn.close();
 			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
+				System.out.println("SQL 전송 실패"+e);
 			}
 		} catch(SQLException e){
 			System.out.println("데이터베이스 연결 실패~!");
@@ -87,7 +87,7 @@
     /* 내부 스타일 */
    .vs, .img_box { height:50vh; margin-top: -45px; }
     #page1 .page_tit { padding-top: 50px; }
-    #page1 {height:750px;}
+    #page1 {height:auto;}
     .table { width:800px; margin:4px auto; padding-left:20px; border-top:2px solid #333; text-align: center;}
     th {  text-align: justify;  line-height: 0; width:220px; padding-top:10px; padding-bottom: 10px;}
     td { padding-top:10px; padding-bottom: 10px; }

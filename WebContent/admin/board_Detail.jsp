@@ -2,61 +2,37 @@
     pageEncoding="utf-8"%>
 <%@ page import="java.sql.*" %>
 <%
+	String pid = "";
+	if(session.getAttribute("id")!=null){
+		pid = (String) session.getAttribute("id");
+	}
 	String path = request.getContextPath();
-%>
-<%
+
 	String driver = "org.postgresql.Driver";
 	String url = "jdbc:postgresql://localhost/pro1";
 	String user = "postgres";
 	String pass = "1234";
+	int bno = Integer.parseInt(request.getParameter("bno"));
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	String compId = "";
 	String sql = "";
-	String wid = request.getParameter("id");
-	String wpw = "";
-	String wname = "";
-	String tel = "";
-	String email = "";
-	String addr = "";
-	int point = 0;
-	String regdate = "";
 	try {
 		Class.forName(driver);
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
-			sql = "select * from member where id=?";
+			sql = "select board.bno as bno, board.title as title, board.content as content, member.name as name, board.resdate as resdate, board.author as author from board, member where board.author=member.id and board.bno=?";
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, wid);
-				rs = pstmt.executeQuery();
-				if(rs.next()){
-					wpw = rs.getString("pw");
-					wname = rs.getString("name");
-					tel = rs.getString("tel");
-					email = rs.getString("email");
-					addr = rs.getString("addr");
-					point = rs.getInt("point");
-					regdate = rs.getString("regdate");
-				}
-				rs.close();
-				pstmt.close();
-				conn.close();
-			} catch(SQLException e){
-				System.out.println("SQL 전송 실패");
-			}
-		} catch(SQLException e){
-			System.out.println("데이터베이스 연결 실패~!");
-		}
-	} catch(ClassNotFoundException e){
-		System.out.println("드라이버 로딩 실패~!");
-	}
+				pstmt.setInt(1, bno);
+				rs = pstmt.executeQuery();	
 %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원정보 상세보기</title>
+<title>공지사항 상세보기</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,14 +67,18 @@
     <script src="<%=path %>/datatables.min.js"></script>
     <link rel="stylesheet" href="<%=path %>/datatables.min.css">
     <style>
-   .vs { height:40vh; }
-    .content { background-image: url("./images/top_career.jpg"); }
-    #page1 .page_tit { padding-top: 60px; }
+    .ad_img_box { height:300px; margin-top: -450px; margin-bottom: 480px;}
+   	.tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
+ 	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
+ 	.page { height: auto; }
+ 	
+	table { display:table; width:1000px; margin:30px auto; 
+	border-bottom:1px solid #333; border-collapse:collapse; }
+	tr { display:table-row; }
+	th, td { display:table-cell; border-top:1px solid #333;
+	text-align:center; line-height:36px; padding-top:16px; padding-bottom:16px; }
+	th { background-color:#333; color:#fff; width: 150px;}
     .table { width:900px; margin:4px auto; padding-top:20px; border-top:2px solid #333; }
-    th {  text-align: justify;  line-height: 0; width:180px; padding-top:10px; padding-bottom: 10px;}
-    td { padding-top:10px; padding-bottom: 10px; }
-    th:after {  content: "";  display: inline-block;  width: 100%; }
-    th:before {  content: "";  display: inline-block;  width: 100%; }
     .lb { display:block;  font-size:20px; }
     .indata { display:inline-block; width:300px; height:24px; line-height:24px; padding:10px; }
     .btn { display:inline-block; outline:none; border:none; border-radius:8px; margin:16px;
@@ -111,7 +91,7 @@
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
         color:#fff;
     }
-    .page_tit { text-align:center; font-size:32px; }
+    .page_tit { text-align:center; font-size:32px; padding-top:60px; padding-bottom:16px; margin-left: 100px;}
    
     </style>
 </head>
@@ -119,47 +99,81 @@
     <div class="container">
 		<%@ include file="./admin_header.jsp" %>
         <div class="content">
-            <figure class="vs">
-                <div class="img_box">
-                    <h1 class="tit">회원 정보</h1>
+            <figure class="vvs">
+                <div class="ad_img_box">
+                    <img src="<%=path %>/images/join.png" alt="관리자 이미지">
+               		<h1 class="tit">ADMIN PAGE</h1>
                 </div>
-            </figure>
+              </figure>
             <section class="page" id="page1">
-                <h2 class="page_tit">회원 상세보기</h2>
-                <div class="page_wrap">
-					<table class="table">
-						<tbody>
-							<tr>
-								<th>아이디</th><td><%=wid %></td>
-							</tr>
-							<tr>
-								<th>비밀번호</th><td><%=wpw %></td>
-							</tr>
-							<tr>
-								<th>이름</th><td><%=wname %></td>
-							</tr>
-							<tr>
-								<th>전화번호</th><td><%=tel %></td>
-							</tr>
-							<tr>
-								<th>이메일</th><td><%=email %></td>
-							</tr>
-							<tr>
-								<th>주소</th><td><%=addr %></td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<a href="member_mod.jsp?id=<%=wid %>" class="btn btn-primary">정보 수정</a> &nbsp; &nbsp; &nbsp; &nbsp;
-									<a href="member_del.jsp?id=<%=wid %>" class="btn btn-cancle">회원탈퇴</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-
-                </div>
-            </section>
-        </div>
+                <h2 class="page_tit">게시글 상세보기</h2>
+				<table>
+					<tbody>
+<%
+						if(rs.next()){
+							compId = rs.getString("author");
+%>					
+						<tr>
+							<th>글 번호</th>
+							<td><%=rs.getInt("bno") %></td>
+						</tr>
+						<tr>
+							<th>제목</th>
+							<td><%=rs.getString("title") %></td>
+						</tr>
+						<tr>
+							<th>내용</th>
+							<td>
+								<p><%=rs.getString("content") %></p>
+							</td>
+						</tr>
+						<tr>
+							<th>작성자</th>
+							<td>
+								<p><%=rs.getString("name") %></p>
+							</td>
+						</tr>
+						<tr>
+							<th>작성일</th>
+							<td>
+								<p><%=rs.getString("resdate") %></p>
+							</td>
+						</tr>
+<%
+						}
+%>
+						<tr>
+							<td colspan="2">
+								<a href="<%=path %>/admin/board_manage.jsp" class="btn btn-primary">글 목록</a> &nbsp; &nbsp; &nbsp;
+<%
+							if(pid.equals(compId) || pid.equals("admin")){
+%>
+								<a href="<%=path %>/admin/board_Update.jsp?bno=<%=bno %>" class="btn btn-cancle">수정</a>								
+								<a href="<%=path %>/admin/board_Del.jsp?bno=<%=bno %>" class="btn btn-primary">삭제</a>
+<%
+							}
+%>							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
         <%@ include file="../footer.jsp" %>
-    </div>
+	</div>
 </body>
 </html>
+<%
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch(SQLException e){
+				System.out.println("SQL 전송 실패"+e);
+			}
+		} catch(SQLException e){
+			System.out.println("데이터베이스 연결 실패~!");
+		}
+	} catch(ClassNotFoundException e){
+		System.out.println("드라이버 로딩 실패~!");
+	}
+%>

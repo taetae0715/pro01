@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원 등록</title>
+<title>신규 회원 등록</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,9 +41,9 @@
     <script src="<%=path %>/datatables.min.js"></script>
     <link rel="stylesheet" href="<%=path %>/datatables.min.css">
     <style>
-   .vs { height:40vh; }
-    .content { background-image: url("./images/top_career.jpg"); }
-    #page1 .page_tit { padding-top: 60px; }
+    .ad_img_box { height:300px; margin-top: -450px; margin-bottom: 480px;}
+   	.tit {position: relative; margin-top: -350px; margin-left:70px; text-align: left; line-height: 40vh; color:#fff;
+ 	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
     .table { width:900px; margin:4px auto; padding-top:20px; border-top:2px solid #333; }
     th {  text-align: justify;  line-height: 0; width:180px; padding-top:10px; padding-bottom: 10px;}
     td { padding-top:10px; padding-bottom: 10px; }
@@ -61,21 +61,21 @@
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
         color:#fff;
     }
-    .page_tit { text-align:center; font-size:32px; }
-   
+    .page_tit { text-align:center; font-size:32px; margin-top: -150px; margin-bottom: 50px;}
     </style>
 </head>
 <body>
     <div class="container">
 		<%@ include file="./admin_header.jsp" %>
         <div class="content">
-            <figure class="vs">
-                <div class="img_box">
-                    <h1 class="tit">JOIN</h1>
+            <figure class="vvs">
+                <div class="ad_img_box">
+                    <img src="<%=path %>/images/join.png" alt="관리자 이미지">
+               		<h1 class="tit">ADMIN PAGE</h1>
                 </div>
-            </figure>
+              </figure>
             <section class="page" id="page1">
-                <h2 class="page_tit">회원가입</h2>
+                <h2 class="page_tit">신규 회원 등록</h2>
                 <div class="page_wrap">
                     <form name="join_form" id="join_form" action="joinpro.jsp" method="post" onsubmit="return form_check(this)">
 						<table class="table">

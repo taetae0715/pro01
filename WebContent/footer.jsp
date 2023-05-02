@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%
+	String ftpath = request.getContextPath();
+%>
         <footer class="ft">
             <article class="row row1">
                 <div class="ft_wrap">
                     <nav class="fnb left">
                         <ul class="fnb_box">
                             <li><a href="pravacy.jsp">개인정보처리방침</a></li>
-                            <li><a href="<%=hdpath %>/customer/customer.jsp">고객상담</a></li>
-                            <li><a href="<%=hdpath %>/company/company.jsp#page4">찾아오시는 길</a></li>
+                            <li><a href="<%=ftpath %>/customer/customer.jsp">고객상담</a></li>
+                            <li><a href="<%=ftpath %>/company/company.jsp#page4">찾아오시는 길</a></li>
                             <li><a href="https://www.ottogimall.co.kr/front/main">오뚜기몰</a></li>
                             <li><a href="https://v2.coginsight.net/service/#/aa15f11b-60b0-470a-90df-c84d1af43be9?">고객상담 챗봇</a></li>
                         </ul>

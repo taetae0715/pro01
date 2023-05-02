@@ -50,7 +50,7 @@
     /* 내부 스타일 */
     .page {height: auto;}
    .vs, .img_box { height:50vh; margin-top: -45px; }
-   .tit {position: relative; margin-top: -350px; text-align: center; line-height: 40vh; color:#fff;
+   .tit {position: relative; margin-top: -380px; text-align: center; line-height: 40vh; color:#fff;
  	  font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
     .lb { display:block;  font-size:36px !important; text-align: center; margin-bottom: 25px;
    	 background: url('<%=path %>/images/tit_h2.png') no-repeat center bottom; padding-bottom: 20px;}
@@ -90,7 +90,7 @@
         background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
         color:#fff;}
         
-    .page_tit { text-align:center; font-size:50px; padding-top:60px; padding-bottom: 50px; font-weight: 600;}
+    .page_tit { text-align:center; font-size:50px; padding-top:40px; padding-bottom: 50px; font-weight: 600;}
     .tb_wrap { clear:both; width:900px; margin:10px auto; border-top:2px solid #333; padding-top:15px; }
    	.detail { display:block; text-align:center; max-width:120px; min-width:90px; padding:12px; font-size:24px; background-color: rgba(7, 93, 70, 0.9);
    	color:#fff; border-radius:30px; margin:42px auto; }

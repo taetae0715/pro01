@@ -48,15 +48,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Sono&display=swap" rel="stylesheet">
     <style>
     /* 내부 스타일 */
-    #page{height: auto;}
+    .page  {height: auto; }
    .vs, .img_box { height:50vh; margin-top: -45px; }
-   .tit {position: relative; margin-top: -350px; text-align: center; line-height: 40vh; color:#fff;
-   font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
-	table { display:table; width:1000px; margin:10px auto; 
-	border-bottom:1px solid #333; border-collapse:collapse; }
+   .tit { position: relative; margin-top: -420px; text-align: center; line-height: 40vh; color:#fff; font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
+	table { display:table; width:1000px; margin:10px auto; border-bottom:1px solid #333; border-collapse:collapse; }
 	tr { display:table-row; }
-	th, td { display:table-cell; border-top:1px solid #333;
-	text-align:center; line-height:36px; }
+	th, td { display:table-cell; border-top:1px solid #333; text-align:center; line-height:36px; }
 	th { background-color:#333; color:#fff; }
     .table { width:1000px; margin:4px auto; padding-top:20px;  }
     .lb { display:block;  font-size:20px; }
@@ -180,7 +177,7 @@
                 </div>
 			</section>
             <section class="page" id="page2">
-                <h2 class="page_tit">오뚜기 광고</h2>
+                <h1 class="page_tit">오뚜기 광고</h1>
                 <div class="page_wrap">
                     <article class="grid_fr">
                         <ul class="grid_box">
@@ -316,6 +313,7 @@
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "";
+		int i = 0;
 		try {
 			Class.forName(driver);
 			try {
@@ -330,9 +328,10 @@
 <%							
 					}					
 						while(rs.next()){
+							++i;
 %>
 						<tr>
-							<td><%=rs.getString("bno") %></td>
+							<td><%=i %></td>
 							<td>
 <%
 							if(pid!=""){
@@ -370,7 +369,7 @@
 				</div>
 				<script>
 				$(document).ready(function(){
-				    $('#tb1').DataTable({'order': [[0, 'desc']]});
+				    $('#tb1').DataTable({'order': [[0, 'asc']]});
 				});
 				</script>
 			</section>
