@@ -48,7 +48,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Brush+Script&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Sono&display=swap" rel="stylesheet">
     <style>
     /* 내부 스타일 */
-    .page  {height: auto; }
+    .page { height: auto; }
    .vs, .img_box { height:50vh; margin-top: -45px; }
    .tit { position: relative; margin-top: -420px; text-align: center; line-height: 40vh; color:#fff; font-size:80px; text-shadow: 1px 1px 10px #e1e1e1;}
 	table { display:table; width:1000px; margin:10px auto; border-bottom:1px solid #333; border-collapse:collapse; }
@@ -108,6 +108,8 @@
 	.grid_box li a.item7 { height: 288px; background-image: url("<%=path %>/images/prbm7.jpg"); background-size:auto 100%;}
 	.grid_box li a.item8 { height: 288px; background-image: url("<%=path %>/images/prbm8.jpg"); background-size:auto 100%;}
 	.grid_box li a .grid_tit { font-size:16px; line-height: 20;}
+	
+	#page2 { height: 800px; }
 	</style>
 </head>
 <body>

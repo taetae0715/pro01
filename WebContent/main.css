@@ -3,7 +3,7 @@
 .vs { clear:both; position:relative; width: 100vw; height:calc(100vh - 135px); overflow:hidden; }
 .vs video {display: block; width: 100%; max-width:1900px;}
 
-.page { clear: both; position: relative; width: 100vw; height: auto; }
+.page { clear: both; position: relative; width: 100vw; height: 100vh; }
 .page_wrap { clear: both; width: 1400px; margin: 0 auto; }
 .page_title { text-align: center; font-size: 40px; padding-top: 1.5em;}
 
@@ -91,7 +91,7 @@ border-top:1px solid #ccc; }
 .tb1 td a:hover { color:darkorange; }
 .tb1 td a:hover .td_com { color:darkorange;}
 
-#page5 { background-color: #fffee5;}
+#page5 { background-color: #fffee5; height: 800px;}
 #page5 .tit_box { clear:both; padding-top: 10px; }
 .colm_fr { clear:both; }
 .colm_fr .lst_tit { clear:both; padding-top: 30px; font-size:28px; font-weight:200; line-height: 2; margin-left: 25px;}
